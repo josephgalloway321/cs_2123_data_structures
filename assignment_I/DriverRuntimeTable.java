@@ -85,9 +85,7 @@ class RuntimeTable
   public int numRepeats;            //number of times to repeat each test size
   public int numTestCaseSizes;      //number of test case sizes
 
-  /* TO BE COMPLETED BY YOU
-   * Fill in your name in the function below
-   */  
+  
   public static void printName( )
   {
       System.out.println("This solution was completed by:");
