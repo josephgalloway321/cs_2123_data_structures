@@ -116,12 +116,12 @@ class RuntimeTable
     tableDS.numTestCaseSizes = numTestCaseSizes;
     tableDS.testCaseSizesArray = new int[numTestCaseSizes];
 
-    for (i = 0; i < testCaseSizesArray.length; i++) {
+    for (i = 0; i < numTestCaseSizes; i++) {
       tableDS.testCaseSizesArray[i] = testCaseSizesArray[i];
     }
 
-    // TODO: set tableDS.runtimeTable to a new double 2D array of with numTestCaseSizes rows and numRepeats columns
-    /* tableDS.runtimeTable = */
+    // COMPLETED-TODO: set tableDS.runtimeTable to a new double 2D array of with numTestCaseSizes rows and numRepeats columns
+    tableDS.runtimeTable = new double[numTestCaseSizes][numRepeats];
     for(i = 0; i < numTestCaseSizes; i++)
     {
       for(j = 0; j < numRepeats; j++)
@@ -135,11 +135,13 @@ class RuntimeTable
         end = System.currentTimeMillis();
         
         //Enter the elapsed number of seconds into the arrRuntimes array for tableDS
-        //TODO: uncomment the next line line after you've set a value for tableDS.runtimeTable
-        //tableDS.runtimeTable[i][j] = (double)(end - start) / 1000;
+        //COMPLETED-TODO: uncomment the next line line after you've set a value for tableDS.runtimeTable
+        tableDS.runtimeTable[i][j] = (double)(end - start) / 1000;
       }
     }
-    //TODO: Calculate the average runtimes (create space for tableDS.averageArray and call computeAverages here)
+    //COMPLETED-TODO: Calculate the average runtimes (create space for tableDS.averageArray and call computeAverages here)
+    tableDS.averageArray = new double[numTestCaseSizes];
+    computeAverages(tableDS);
     
     return tableDS;      
   }
@@ -180,7 +182,7 @@ class RuntimeTable
    */
   public static void computeAverages(RuntimeTable tableDS)
   {
-
+    
   }
   
   /* TODO: TO BE COMPLETED BY YOU
@@ -194,7 +196,19 @@ class RuntimeTable
    */
   public static void printRuntimeTable(RuntimeTable tableDS)
   {
+    System.out.println(tableDS.name);
+    //System.out.println("Test size\t Test #1\t Test #2\t Test #3\t Test #4\t Average\t Increase");
 
+    for (int i = 0; i < tableDS.numTestCaseSizes; i++) {
+      System.out.print(tableDS.testCaseSizesArray[i] + "\t");
+      
+      // Print columns using j
+      for (int j = 0; j < tableDS.numRepeats; j++) {
+        System.out.print(tableDS.runtimeTable[i][j] + "\t");
+      }
+      
+      System.out.println();
+    }
   }
 }
 
