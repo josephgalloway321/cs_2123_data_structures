@@ -105,13 +105,21 @@ class RuntimeTable
     // create RuntimeTable variable to return
     RuntimeTable tableDS = new RuntimeTable();
     
-    // TODO: copy passed data into the RuntimeTable variable
-    /* fill name in tableDS with the variable name */
-    /* fill numRepeats in tableDS with the variable numRepeats */
-    /* fill numTestCaseSizes in tableDS with the variable numTestCaseSizes */
-    /* set testCaseSizesArray in tableDS to hold numTestCaseSizes number of ints */
-    /* fill testCaseSizesArray in tableDS with the variable testCaseSizesArray (hint: use a loop) */
-    
+    // COMPLETED-TODO: copy passed data into the RuntimeTable variable
+    /* 1) fill name in tableDS with the variable name */
+    /* 2) fill numRepeats in tableDS with the variable numRepeats */
+    /* 3) fill numTestCaseSizes in tableDS with the variable numTestCaseSizes */
+    /* 4) set testCaseSizesArray in tableDS to hold numTestCaseSizes number of ints */
+    /* 5) fill testCaseSizesArray in tableDS with the variable testCaseSizesArray (hint: use a loop) */
+    tableDS.name = name;
+    tableDS.numRepeats = numRepeats;
+    tableDS.numTestCaseSizes = numTestCaseSizes;
+    tableDS.testCaseSizesArray = new int[numTestCaseSizes];
+
+    for (i = 0; i < testCaseSizesArray.length; i++) {
+      tableDS.testCaseSizesArray[i] = testCaseSizesArray[i];
+    }
+
     // TODO: set tableDS.runtimeTable to a new double 2D array of with numTestCaseSizes rows and numRepeats columns
     /* tableDS.runtimeTable = */
     for(i = 0; i < numTestCaseSizes; i++)
