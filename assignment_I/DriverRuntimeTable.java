@@ -177,18 +177,18 @@ class RuntimeTable
     return data;
   }
   
-  /* TODO: TO BE COMPLETED BY YOU
+  /* COMPLETED-TODO: TO BE COMPLETED BY YOU
    * Calculate and insert the average runtime for each set of test data into tableDS
    */
   public static void computeAverages(RuntimeTable tableDS)
   {
     tableDS.averageArray = new double[tableDS.numTestCaseSizes];
-    double sum = 0;
+    double sum;
     for (int i = 0; i < tableDS.numTestCaseSizes; i++) {
+      sum = 0.0;
       for (int j = 0; j < tableDS.numRepeats; j++) {
         sum += tableDS.runtimeTable[i][j];
       }
-      System.out.print(sum + " ");
       // Calculate then store average
       tableDS.averageArray[i] = sum / tableDS.numRepeats;
     }
@@ -208,10 +208,10 @@ class RuntimeTable
     System.out.println(tableDS.name);
     System.out.print("Test size\t");
     for (int i = 1; i <= tableDS.numRepeats; i++) {
-      System.out.print("Test #" + i + "\t");
+      System.out.print("Test #" + i + " ");
     }
-    System.out.print("Average\t");
-    System.out.print("Increase\t");
+    System.out.print("Average ");
+    System.out.print("Increase ");
     System.out.println();
 
     for (int i = 0; i < tableDS.numTestCaseSizes; i++) {
@@ -219,18 +219,18 @@ class RuntimeTable
       
       // Print columns using j
       for (int j = 0; j < tableDS.numRepeats; j++) {
-        System.out.printf("%.3f\t", tableDS.runtimeTable[i][j]);
+        System.out.printf("%.3f\t ", tableDS.runtimeTable[i][j]);
       }
 
       // Print average column
-      System.out.printf("%.3f\t", tableDS.averageArray[i]);
+      System.out.printf("%.3f\t ", tableDS.averageArray[i]);
 
       if (i != 0) {
         // Print increase column
-        System.out.printf("%.3f\t", tableDS.averageArray[i] / tableDS.averageArray[i - 1]);
+        System.out.printf("%.3f\t ", tableDS.averageArray[i] / tableDS.averageArray[i - 1]);
       }
       else {
-        System.out.print("N\\A");
+        System.out.print(" N\\A");
       }
       
       
