@@ -66,11 +66,11 @@ public class DriverRuntimeTable
 
 /************************** Methods for timing functions and printing tables of the runtimes **************************/
 
- /* TODO:
+ /* COMPLETED-TODO:
   * Give your asymptotic estimates for the runtimes of the following 3 functions:
-  * mysteryRuntime1: O(  )
-  * mysteryRuntime2: O(  )
-  * mysteryRuntime3: O(  )
+  * mysteryRuntime1: O(N)
+  * mysteryRuntime2: O(N^2)
+  * mysteryRuntime3: O(N^2)
   *
   */
   
@@ -188,6 +188,7 @@ class RuntimeTable
       for (int j = 0; j < tableDS.numRepeats; j++) {
         sum += tableDS.runtimeTable[i][j];
       }
+      System.out.print(sum + " ");
       // Calculate then store average
       tableDS.averageArray[i] = sum / tableDS.numRepeats;
     }
@@ -272,7 +273,7 @@ class ArrayAlgs
   
   /*
    * Provided code - DO NOT CHANGE THIS METHOD
-   * TODO: find the runtime of this code and put it in comment at top file
+   * COMPLETED-TODO: find the runtime of this code and put it in comment at top file
    */ 
   static void mysteryRuntime1(File input) throws FileNotFoundException
   {
@@ -300,7 +301,7 @@ class ArrayAlgs
   
   /*
    * Provided code - DO NOT CHANGE THIS METHOD 
-   * TODO: find the runtime of this code and put it in comment at top file
+   * COMPLETED-TODO: find the runtime of this code and put it in comment at top file
    */ 
   static void mysteryRuntime2(File input) throws FileNotFoundException
   {
@@ -335,7 +336,7 @@ class ArrayAlgs
   
   /*
    * Provided code - DO NOT CHANGE THIS METHOD 
-   * TODO: find the runtime of this code and put it in comment at top file
+   * COMPLETED-TODO: find the runtime of this code and put it in comment at top file
    */ 
   static void mysteryRuntime3(File input) throws FileNotFoundException
   {
