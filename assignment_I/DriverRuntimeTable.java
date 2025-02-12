@@ -194,7 +194,7 @@ class RuntimeTable
     }
   }
   
-  /* TODO: TO BE COMPLETED BY YOU
+  /* COMPLETED-TODO: TO BE COMPLETED BY YOU
    * Print the information in tableDS as a 2d table.  Display 3 digits after the decimal point.  
    * You can assume all of the runtimes are <= 99.999 seconds.  The number of repeats will be <= 14.
    *
@@ -219,15 +219,18 @@ class RuntimeTable
       
       // Print columns using j
       for (int j = 0; j < tableDS.numRepeats; j++) {
-        System.out.printf("%.3f\t ", tableDS.runtimeTable[i][j]);
+        System.out.printf("%.3f   ", tableDS.runtimeTable[i][j]);
+        if (j > 8) {
+          System.out.print(" ");
+        }
       }
 
       // Print average column
-      System.out.printf("%.3f\t ", tableDS.averageArray[i]);
+      System.out.printf("%.3f   ", tableDS.averageArray[i]);
 
       if (i != 0) {
         // Print increase column
-        System.out.printf("%.3f\t ", tableDS.averageArray[i] / tableDS.averageArray[i - 1]);
+        System.out.printf("%.3f", tableDS.averageArray[i] / tableDS.averageArray[i - 1]);
       }
       else {
         System.out.print(" N\\A");
