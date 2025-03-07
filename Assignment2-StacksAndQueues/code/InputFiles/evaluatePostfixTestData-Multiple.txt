@@ -1,0 +1,12 @@
+true false AND true OR
+true
+true false AND true OR NOT
+false
+true false NOR true false NAND XOR
+true
+true false NOR true false NAND XOR true false AND true OR NOT BICOND
+false
+true false NOR true false NAND XOR true false AND true OR NOT BICOND NOT NOT NOT NOT
+false
+true true true true true true true true true true true true true true true true true NOR NOR NOR NOR NOR NOR NOR NOR NOR NOR NOR NOR NOR NOR NOR NOR
+false

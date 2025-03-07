@@ -1,0 +1,14 @@
+true true
+error
+NOT
+error
+COND
+error
+false COND
+error
+false false false COND
+error
+true false AND OR
+error
+true false true true AND OR
+error
