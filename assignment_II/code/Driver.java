@@ -10,10 +10,9 @@ public class Driver
     System.out.println(  );
 
     //Call student solution for the test files:
-    // String fileNames[] = {"./InputFiles/evaluatePostfixTestData-Single.txt",
-    //                       "./InputFiles/evaluatePostfixTestData-Multiple.txt",
-    //                       "./InputFiles/evaluatePostfixTestData-Errors.txt"};
-    String fileNames[] = {"./InputFiles/evaluatePostfixTestData-Errors.txt"};
+    String fileNames[] = {"./InputFiles/evaluatePostfixTestData-Single.txt",
+                          "./InputFiles/evaluatePostfixTestData-Multiple.txt",
+                          "./InputFiles/evaluatePostfixTestData-Errors.txt"};
     for( int i=0; i<fileNames.length; i++ )
       testFile( fileNames[i] );
 

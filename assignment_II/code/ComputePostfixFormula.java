@@ -3,9 +3,6 @@ import java.util.Stack;
 
 public class ComputePostfixFormula 
 {
-  /* TO BE COMPLETED BY YOU
-   * Fill in your name in the function below
-   */  
   public static void printName( )
   {
     System.out.println("This solution was completed by:");
@@ -108,42 +105,13 @@ public class ComputePostfixFormula
       }
     }
 
-    // TODO: Step 3, Check if more than one operand after all tokens evaluated
-    // if () {
-       //  return something; 
-    //}
+    // Step 3, Check if more than one operand after all tokens evaluated
+    if (s.size() > 1) {
+       return "error"; 
+    }
 
     // Step 4, Return the only value in the stack
     return s.pop();
   }
  
 }
-
-// // EXAMPLE Push items to stack
-// System.out.println("__________________________");
-// stackTokens.push("operand1");
-// stackTokens.push("operand2");
-// stackTokens.push("operator");
-
-// // EXAMPLE Printing stack
-// System.out.println("Stack => " + stackTokens);
-// System.out.println();
-
-// // EXAMPLE Popping items from stack
-// String tokenAtTop = stackTokens.pop();
-// System.out.println("Stack.pop() => " + tokenAtTop);
-// System.out.println("Stack => " + stackTokens);
-// System.out.println();
-
-// // EXAMPLE Peek at the item at the top of the stack without removing
-// tokenAtTop = stackTokens.peek();
-// System.out.println("Stack.peek() => " + tokenAtTop);
-// System.out.println("Current Stack => " + stackTokens);
-// System.out.println(stackTokens.empty());
-// System.out.println("__________________________");
-
-// // EXAMPLE Iterating through queue
-// for (String token : symbolQueue) {
-    //   System.out.println(token);
-    // }
-    // System.out.println();
