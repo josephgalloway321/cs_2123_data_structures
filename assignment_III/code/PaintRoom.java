@@ -4,18 +4,18 @@ import java.util.*;
 /* PaintRoom
  */
 public class PaintRoom { 
-  /* TODO
+  /* COMPLETED-TODO
    * printName
    * input: none
    * output: none
    *
    * Prints name the student who worked on this solution
    */
-  public static void printName( )
+  public static void printName()
   {
-    /* TODO : Fill in your name*/
+    /* COMPLETED-TODO : Fill in your name*/
     System.out.printf("\nThis solution was completed by:\n");
-    System.out.printf("<student name>\n");
+    System.out.printf("Joseph D. Galloway II\n");
   }
 
   /* TODO
@@ -29,7 +29,7 @@ public class PaintRoom {
 
     /* Find the location of 'A' in the room */
     /* HINT: room.length is the number of rows and room[i].length is the number of columns in the ith row */
-
+    
 
     /* Call your recursive function here */
     //recPaintRoom( room, /* initial row value */, /* initial col value */, /* initial value for distanceFromA */  );
