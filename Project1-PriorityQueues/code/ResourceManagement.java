@@ -1,24 +1,26 @@
+import java.io.File;
 import java.util.*;
 
 /* ResourceManagement
  *
  * Stores the information needed to decide which items to purchase for the given budget and departments
  */
-public class ResourceManagement
-{
+public class ResourceManagement {
   private PriorityQueue<Department> departmentPQ; /* priority queue of departments */
   private Double remainingBudget;                 /* the budget left after purchases are made (should be 0 after the constructor runs) */
   private Double budget;                          /* the total budget allocated */
   
-  /* TO BE COMPLETED BY YOU
+  /* COMPLETED-TODO
    * Fill in your name in the function below
    */  
-  public static void printName( )
-  {
+  public static void printName() {
     /* COMPLETED-TODO : Fill in your name */
     System.out.println("This solution was completed by:");
     System.out.println("Joseph D. Galloway II");
     System.out.println("N/A");
+
+    // TEST
+    //Department merp = new Department("./TestCase1/Department-Chemistry.txt");
   }
 
   /* Constructor for a ResourceManagement object
@@ -26,10 +28,14 @@ public class ResourceManagement
    * Simulates the algorithm from the pdf to determine what items are purchased
    * for the given budget and department item lists.
    */
-  public ResourceManagement( String fileNames[], Double budget )
-  {
+  public ResourceManagement(String fileNames[], Double budget) {
     /* Create a department for each file listed in fileNames */
     
+    // Loop through filenames array to create each department then add to priority queue
+    for (String fileName : fileNames) { 
+      Department dept = new Department(fileName); 
+      departmentPQ.add(dept);       
+    }
     
     /* Simulate the algorithm for picking the items to purchase */
     /* Be sure to print the items out as you purchase them */
@@ -45,7 +51,7 @@ public class ResourceManagement
    * Print a summary of what each department received and did not receive.
    * Be sure to also print remaining items in each itemsDesired Queue.
    */      
-  public void printSummary(  ){
+  public void printSummary() {
     
     /* Here's the part of the code I used for printing prices */
     //String price = String.format("$%.2f", /*Item's price*/ );
@@ -53,23 +59,64 @@ public class ResourceManagement
   }   
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Department
  *
  * Stores the information associated with a Department at the university
  */
-class Department implements Comparable<Department>
-{
+class Department implements Comparable<Department> {
   String name;                /* name of this department */
   Double priority;            /* total money spent on this department */
   Queue<Item> itemsDesired;   /* list of items this department wants */
   Queue<Item> itemsReceived;  /* list of items this department received */
   Queue<Item> itemsRemoved;   /* list of items that were skipped because they exceeded the remaining budget */
 
-  /* TODO
+  /* COMPLETED-TODO
    * Constructor to build a Department from the information in the given fileName
    */
-  public Department( String fileName ){
-    /* Open the fileName, create items based on the contents, and add those items to itemsDesired */
+  public Department(String fileName){
+    // Open the fileName
+    File file = new File(fileName);
+    Scanner input;
+    try {
+      input = new Scanner(file);
+      input.next();  // Skip department name
+
+      // Create items based on the contents in the file
+      while (input.hasNextLine()) { 
+        String currentLine = input.nextLine();
+        
+        if (currentLine.isEmpty()) {
+          continue;  // Skip empty lines
+        }
+        
+        String currentItemName = currentLine;
+        Double currentItemPrice = input.nextDouble();
+        Item item = new Item(currentItemName, currentItemPrice);
+        System.out.printf("Item: %s, Price: %.2f\n", item.name, item.price);
+
+        // TODO: Add items to itemsDesired
+        itemsDesired.add(item);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+      System.out.println("The file %s was not found");
+    }
   }
   
   /*
@@ -113,19 +160,21 @@ class Department implements Comparable<Department>
   }
 }
 
+
+
+
 /* Item
  *
  * Stores the information associated with an Item which is desired by a Department
  */
-class Item
-{
+class Item {
   String name;    /* name of this item */
   Double price;   /* price of this item */
 
   /*
    * Constructor to build a Item
    */
-  public Item( String name, Double price ){
+  public Item(String name, Double price) {
     this.name = name;
     this.price = price;
   }
