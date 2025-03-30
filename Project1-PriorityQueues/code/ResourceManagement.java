@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.*;
 
 /* ResourceManagement
@@ -16,10 +15,10 @@ public class ResourceManagement
    */  
   public static void printName( )
   {
-    /* TODO : Fill in your name */
+    /* COMPLETED-TODO : Fill in your name */
     System.out.println("This solution was completed by:");
-    System.out.println("<student name>");
-    System.out.println("<student name #2 (if no partner write \"N/A\")>");
+    System.out.println("Joseph D. Galloway II");
+    System.out.println("N/A");
   }
 
   /* Constructor for a ResourceManagement object
