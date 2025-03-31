@@ -43,7 +43,8 @@ public class Driver {
     double remainingBudget = budget;
 
     // While the budget > 0, take a department out of the priority queue
-    // and analyze its desired items
+    // and analyze its desired items    Department dept = new Department(fileName);
+
 
     Department currentDept = null;
     while (remainingBudget > 0) { 
