@@ -12,7 +12,7 @@ public class Department implements Comparable<Department> {
 
   public Department(String name, Queue<Item> desiredItem) {
     this.name = name;
-    this.desiredItems = desiredItem;
+    this.desiredItems = desiredItemt;
     this.budgetSpent = 0.0;
     this.priority = 0.0;  // All created departments have priority of 0
   }
