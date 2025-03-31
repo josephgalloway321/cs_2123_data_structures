@@ -88,7 +88,7 @@ public class ResourceManagement {
           System.out.printf("Department of %-30s- %-30s- %30s\n", currentDept.getDepartmentName(), currentItem.getName(), price);
         }
         else {
-          Item remainingBudgetItem = new Item("Remaining Budget", remainingBudget);
+          Item remainingBudgetItem = new Item("Scholarship", remainingBudget);
           currentItem = remainingBudgetItem; 
           currentDept.addItemToItemsReceived(remainingBudgetItem);
           currentDept.increasePriority(remainingBudget);
