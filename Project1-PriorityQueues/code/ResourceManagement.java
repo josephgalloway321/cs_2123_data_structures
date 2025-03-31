@@ -25,10 +25,18 @@ public class ResourceManagement {
    * Simulates the algorithm from the pdf to determine what items are purchased
    * for the given budget and department item lists.
    */
+
+  /* Simulate the algorithm for picking the items to purchase */
+  /* Be sure to print the items out as you purchase them */
+  /* Here's the part of the code I used for printing prices as items */
+  //String price = String.format("$%.2f", /*Item's price*/ );
+  //System.out.printf("Department of %-30s- %-30s- %30s\n", /*Department's name*/, /*Item's name*/, price );
+
   public ResourceManagement(String fileNames[], Double budget) {
     departmentPQ = new PriorityQueue<Department>();  // Create priority queue
 
     remainingBudget = budget;
+    this.budget = budget;
 
     /* Create a department for each file listed in fileNames */
     // Loop through filenames array to create each department then add to priority queue
@@ -37,11 +45,15 @@ public class ResourceManagement {
       departmentPQ.add(dept);       
     }
 
+    // Print header for purchased items
+    System.out.println("ITEMS PURCHASED");
+    System.out.println("-------------------------------------");
+
     Department currentDept = null;
     while (remainingBudget > 0.0) { 
       // Remove and save the front department of the priority queue
       currentDept = departmentPQ.poll();
-      System.out.printf("Removed department %s with priority %.2f\n", currentDept.getDepartmentName(), currentDept.getPriority());
+      //System.out.printf("Removed department %s with priority %.2f\n", currentDept.getDepartmentName(), currentDept.getPriority());
 
       // Get the current desired item from the department to analyze
       Item currentItem = currentDept.getNextDesiredItem();
@@ -57,7 +69,8 @@ public class ResourceManagement {
       if (currentItem != null) {
         currentDept.addItemToItemsReceived(currentItem);
         currentDept.increasePriority(currentItem.getPrice());
-        System.out.printf("Department %s, purchased %s, with price %.2f\n", currentDept.getDepartmentName(), currentItem.getName(), currentItem.getPrice());
+        String price = String.format("$%.2f", currentItem.getPrice());
+        System.out.printf("Department of %-30s- %-30s- %30s\n", currentDept.getDepartmentName(), currentItem.getName(), price);
         remainingBudget -= currentItem.getPrice();
       }
 
@@ -71,8 +84,8 @@ public class ResourceManagement {
           currentDept.addItemToItemsReceived(scholarship);
           currentDept.increasePriority(1000.00);
           remainingBudget -= 1000.00;
-          System.out.printf("Department %s, purchased %s, with price %.2f\n", currentDept.getDepartmentName(), currentItem.getName(), currentItem.getPrice());
-
+          String price = String.format("$%.2f", currentItem.getPrice());
+          System.out.printf("Department of %-30s- %-30s- %30s\n", currentDept.getDepartmentName(), currentItem.getName(), price);
         }
         else {
           Item remainingBudgetItem = new Item("Remaining Budget", remainingBudget);
@@ -80,21 +93,14 @@ public class ResourceManagement {
           currentDept.addItemToItemsReceived(remainingBudgetItem);
           currentDept.increasePriority(remainingBudget);
           remainingBudget -= remainingBudget;
-          System.out.printf("Department %s, purchased %s, with price %.2f\n", currentDept.getDepartmentName(), currentItem.getName(), currentItem.getPrice());
+          String price = String.format("$%.2f", currentItem.getPrice());
+          System.out.printf("Department of %-30s- %-30s- %30s\n", currentDept.getDepartmentName(), currentItem.getName(), price);
         }
       }
 
       // Add current department back to the priority queue
       departmentPQ.add(currentDept);
     }
-    
-    /* Simulate the algorithm for picking the items to purchase */
-    /* Be sure to print the items out as you purchase them */
-    /* Here's the part of the code I used for printing prices as items */
-    //String price = String.format("$%.2f", /*Item's price*/ );
-    //System.out.printf("Department of %-30s- %-30s- %30s\n", /*Department's name*/, /*Item's name*/, price );
-    
-    
   } 
 
   /* printSummary
@@ -107,6 +113,37 @@ public class ResourceManagement {
     /* Here's the part of the code I used for printing prices */
     //String price = String.format("$%.2f", /*Item's price*/ );
     //System.out.printf("%-30s - %30s\n", /*Item's name*/, price );
+    System.out.println();
+    for (Department dept : departmentPQ) {
+      System.out.println("Department of " + dept.getDepartmentName());
+      System.out.printf("Total Spent       = $%.2f\n", dept.getPriority());
+      System.out.printf("Percent of Budget = %.2f%%\n", (dept.getPriority() / budget)*100);
+      System.out.println("-------------------------------------");
+
+      // Print items received
+      System.out.println("ITEMS RECEIVED");
+      String price = "";
+      for (Item item : dept.getReceivedItems()) {
+        price = String.format("$%.2f", item.getPrice());
+        System.out.printf("%-30s - %30s\n", item.getName(), price);
+      }
+      System.out.println();
+
+      // TODO: Print items removed and items still on the desired list
+      System.out.println("ITEMS NOT RECEIVED");
+      for (Item item : dept.getRemovedItems()) {
+        price = String.format("$%.2f", item.getPrice());
+        System.out.printf("%-30s - %30s\n", item.getName(), price);
+      }
+
+      for (Item item : dept.getDesiredItems()) {
+        price = String.format("$%.2f", item.getPrice());
+        System.out.printf("%-30s - %30s\n", item.getName(), price);
+      }
+
+      System.out.println();
+    }
+    
   }   
 }
 
@@ -216,6 +253,18 @@ class Department implements Comparable<Department> {
   @Override
   public String toString() {
     return "NAME: " + name + "\nPRIORITY: " + priority + "\nDESIRED: " + itemsDesired + "\nRECEIVED " + itemsReceived + "\nREMOVED " + itemsRemoved + "\n";
+  }
+
+  public Queue<Item> getDesiredItems() {
+    return this.itemsDesired;
+  }
+
+  public Queue<Item> getReceivedItems() {
+    return this.itemsReceived;
+  }
+
+  public Queue<Item> getRemovedItems() {
+    return this.itemsRemoved;
   }
 
   public Item getNextDesiredItem() {
