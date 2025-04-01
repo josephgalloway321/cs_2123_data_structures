@@ -189,21 +189,26 @@ class Department implements Comparable<Department> {
     try {
       input = new Scanner(file);
       this.name = input.next();  // Assign department name
+      System.out.println(this.name);
 
       // Create items based on the contents in the file
       while (input.hasNextLine()) { 
-        String currentLine = input.nextLine();
-        
-        if (currentLine.isEmpty()) {
+        System.out.println("Derp");
+        String currentString = input.next();
+        System.out.println(currentString);
+
+        if (currentString.isEmpty()) {
           continue;  // Skip empty lines
         }
         
-        String currentItemName = currentLine;
+        String currentItemName = currentString;
         Double currentItemPrice = input.nextDouble();
+        System.out.println(currentItemPrice);
         Item item = new Item(currentItemName, currentItemPrice);
 
         // Add items to itemsDesired
         itemsDesired.add(item);
+        System.out.println("Merp");
       }
     } catch (Exception e) {
       e.printStackTrace();
