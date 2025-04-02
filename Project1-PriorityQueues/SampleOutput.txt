@@ -86,7 +86,7 @@ Chlorine                       -                        $400.00
 Argon                          -                        $400.00
 Potassium                      -                        $400.00
 Calcium                        -                        $400.00
-Scandium                       -                        $400.00
+Scandium                       -                        $400.00String currentString = input.next(); 
 Titanium                       -                        $400.00
 Vanadium                       -                        $400.00
 Chromium                       -                        $400.00

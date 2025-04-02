@@ -104,7 +104,7 @@ public class ResourceManagement {
   } 
 
   /* printSummary
-   * TODO
+   * COMPLETED-TODO
    * Print a summary of what each department received and did not receive.
    * Be sure to also print remaining items in each itemsDesired Queue.
    */      
@@ -129,7 +129,7 @@ public class ResourceManagement {
       }
       System.out.println();
 
-      // TODO: Print items removed and items still on the desired list
+      // COMPLETED-TODO: Print items removed and items still on the desired list
       System.out.println("ITEMS NOT RECEIVED");
       for (Item item : dept.getRemovedItems()) {
         price = String.format("$%.2f", item.getPrice());
@@ -146,21 +146,6 @@ public class ResourceManagement {
     
   }   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* Department
@@ -189,13 +174,13 @@ class Department implements Comparable<Department> {
     try {
       input = new Scanner(file);
       this.name = input.next();  // Assign department name
-      System.out.println(this.name);
 
       // Create items based on the contents in the file
       while (input.hasNextLine()) { 
-        System.out.println("Derp");
-        String currentString = input.next();
-        System.out.println(currentString);
+        if (!input.hasNext()) {
+          break;
+        }
+        String currentString = input.next(); 
 
         if (currentString.isEmpty()) {
           continue;  // Skip empty lines
@@ -203,12 +188,10 @@ class Department implements Comparable<Department> {
         
         String currentItemName = currentString;
         Double currentItemPrice = input.nextDouble();
-        System.out.println(currentItemPrice);
         Item item = new Item(currentItemName, currentItemPrice);
 
         // Add items to itemsDesired
         itemsDesired.add(item);
-        System.out.println("Merp");
       }
     } catch (Exception e) {
       e.printStackTrace();
@@ -296,8 +279,6 @@ class Department implements Comparable<Department> {
     return this.priority;
   }
 }
-
-
 
 
 /* Item
