@@ -55,7 +55,37 @@ public class AVLTree<T extends Comparable<T>> extends BSTree<T> {
      * getParent (in AVLNode.java)
      */
     void rebalanceTree( AVLNode<T> x ) {
+      int xCurrentBalance = getBalance(x);
+      AVLNode<T> z;  // Child node with greater balance
+      int zCurrentBalance;
       //
-      
+      while (x != null) { 
+        // Check if current node is unbalanced (which is not -1, 0, or 1)
+        if (xCurrentBalance <= -2 || xCurrentBalance >= 2) {
+          z = x.getTallerChild();
+          zCurrentBalance = getBalance(z);
+          if ((xCurrentBalance > 0 && zCurrentBalance < 0) || (xCurrentBalance < 0 && zCurrentBalance > 0)) {
+            if (zCurrentBalance > 0) {
+              rightRotate(z);
+            }
+            else {
+              leftRotate(z);
+            }    
+          }
+
+          // Balance of x >= 2, left is higher, so rotate right on x
+          if (xCurrentBalance >= 2) {
+            rightRotate(x);
+          }
+
+          // Balance of x <= -2, right is higher, so rotate left on x
+          else {
+            leftRotate(x);
+          }
+        }
+
+        // Go to the next parent node
+        x = x.getParent();
+      }
     }
 }
