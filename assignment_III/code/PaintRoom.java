@@ -38,13 +38,13 @@ public class PaintRoom {
         if (room[row][col] == 'A') {
           initialRowValue = row;
           initialColValue = col;
-          //System.out.println("Found A at row: " + initialRowValue + ", col: "  + initialColValue);
+          System.out.println("Found A at row: " + initialRowValue + ", col: "  + initialColValue);
         }
       }
     }
 
     /* Call your recursive function here */
-    recPaintRoom( room, initialRowValue, initialColValue, initialDistanceFromA);
+    //recPaintRoom( room, initialRowValue, initialColValue, initialDistanceFromA);
   }
   
   /* TODO

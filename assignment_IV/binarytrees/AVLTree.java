@@ -40,7 +40,7 @@ public class AVLTree<T extends Comparable<T>> extends BSTree<T> {
         return errors;
     }
 
-    /* TODO
+    /* COMPLETED-TODO
      * rebalanceTree
      * input: node to start fixing the tree from (climbing up towards the root)
      * output: none
@@ -55,11 +55,10 @@ public class AVLTree<T extends Comparable<T>> extends BSTree<T> {
      * getParent (in AVLNode.java)
      */
     void rebalanceTree( AVLNode<T> x ) {
-      int xCurrentBalance = getBalance(x);
-      AVLNode<T> z;  // Child node with greater balance
-      int zCurrentBalance;
-      //
       while (x != null) { 
+        int xCurrentBalance = getBalance(x);
+        AVLNode<T> z;  // Child node with greater balance
+        int zCurrentBalance;
         // Check if current node is unbalanced (which is not -1, 0, or 1)
         if (xCurrentBalance <= -2 || xCurrentBalance >= 2) {
           z = x.getTallerChild();
